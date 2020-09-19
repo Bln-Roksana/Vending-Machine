@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body onload=' location.href="#screen" '>
+    <h1>Hello customer!</h1>
+    <p>I am a vending machine! On offer are:</p>
+    <table>
+      <tr>
+        <th><img class="product-img" src="https://www.americansweets.co.uk/image/cache/catalog/american-soda/coca-cola/coca-cola-classic-can-800x800.png" alt=""></th>
+        <th><img class="product-img" src="http://www.poisonmushroom.org/content/uploads/2013/09/slide_279895_2085668_free-201x300.jpg" alt=""></th>
+        <th><img class="product-img" src="https://mylittleamerica.com/935-large_default/charms-fluffy-stuff-cotton-candy.jpg" alt=""></th>
+      </tr>
+      <tr>
+        <th>$ <%= pCoke.price %></th>
+        <th>$ <%= pChips.price %></th>
+        <th>$ <%= pCandy.price %></th>
+      </tr>
+      <tr>
+        <th><%= pCoke.stock %> left</th>
+        <th><%= pChips.stock %>  left</th>
+        <th><%= pCandy.stock %>  left</th>
+      </tr>
+      <tr>
+        <th>
+          <button class="buy-item-btn" id="coke" data-stock="<%= pCoke.stock %>" value="<%= pCoke.price %>" onclick="BuyItem(this.id)" type="button" name="button">Buy this</button>
+        </th>
+        <th>
+          <button class="buy-item-btn" id="chips" data-stock="<%= pChips.stock %>" value="<%= pChips.price %>" onclick="BuyItem(this.id)" type="button" name="button">Buy this</button>
+        </th>
+        <th>
+          <button class="buy-item-btn" id="candy" data-stock="<%= pCandy.stock %>" value="<%= pCandy.price %>" onclick="BuyItem(this.id)" type="button" name="button">Buy this</button>
+        </th>
+      </tr>
+    </table>
+    <div>
+      <div id="screen" class="screen-container">
+        <p class="screen-text">
+          <span id="redirect"></span>
+          <span id="warning-message"> <br></span>
+          THANK YOU
+          <br>
+          CHANGE DUE:
+          <br>
+          <span id="current-coin-value">$<%=changeDue%></span>
+        </p>
+
+      </div>
+      <select id="coinValue">
+        <!-- <option value="19.05_1.52_2.5">Penny</option> -->
+        <option value="21.21_1.95_5">Nickel</option>
+        <option value="17.91_1.35_2.268">Dime</option>
+        <option value="24.26_1.75_5.67">Quarter</option>
+        <option value="25_2_6">Coin not mentioned above</option>
+      </select>
+      <button onclick="AddCoins()">Submit</button>
+    </div>
+    <script>
+    //disable all buying buttons
+    document.querySelectorAll(".buy-item-btn").forEach(function(button){
+      button.disabled=true;
+    });
+
+    document.getElementById("redirect").innerHTML="Redirecting in 5 ...<br><br>"
+
+    setTimeout(function(){
+      document.getElementById("redirect").innerHTML="Redirecting in 4 ...<br><br>"
+    },1000);
+    setTimeout(function(){
+      document.getElementById("redirect").innerHTML="Redirecting in 3 ...<br><br>"
+    },2000);
+    setTimeout(function(){
+      document.getElementById("redirect").innerHTML="Redirecting in 2 ...<br><br>"
+    },3000);
+    setTimeout(function(){
+      document.getElementById("redirect").innerHTML="Redirecting in 1 ...<br><br>"
+    },4000);
+
+
+
+    setTimeout(function(){
+      location.replace("/");
+    },5000);
+
+
+
+
+    //     totalMoneyInserted=totalCoins.totalCoinsInserted;
+    //     document.getElementById("current-coin-value").innerHTML="$"+parseFloat(totalMoneyInserted).toFixed(2);
+    //     let warningElement= document.getElementById("warning-message");
+    //     if (totalCoins.warningMessage){
+    //       warningElement.innerHTML=totalCoins.warningMessage+"<br>";
+    //       console.log(warningElement);
+    //
+    //     }else{
+    //       warningElement.innerHTML="<br>";
+    //     };
+
+    </script>
+  </body>
+</html>
