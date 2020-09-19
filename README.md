@@ -1,2 +1,3 @@
 # Vending Machine
 This was done as a side project and aside from the course. Done before learning React.
+Machine recognizes value of inserted coins, keeps track of overall value of inserted coins, keeps track of stock, gives change...
